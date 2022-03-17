@@ -17,8 +17,10 @@ jobs:
         run: |
           nomos vet --path config-sync/ --no-api-server-check --source-format unstructured
       - name: kubeval
+        if: ${{ always() }}
         run: |
           kpt fn eval config-sync/ --results-dir tmp --image gcr.io/kpt-fn/kubeval:v0.2 -- strict=true ignore_missing_schemas=true
       - name: gatekeeper
+        if: ${{ always() }}
         run: |
           kpt fn eval config-sync/ --results-dir tmp --image gcr.io/kpt-fn/gatekeeper:v0.2
