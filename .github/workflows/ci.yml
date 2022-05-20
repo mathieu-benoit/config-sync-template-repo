@@ -19,7 +19,7 @@ jobs:
       - name: kubeval
         if: ${{ always() }}
         run: |
-          kpt fn eval config-sync/ --results-dir tmp --image gcr.io/kpt-fn/kubeval:v0.2 -- strict=true ignore_missing_schemas=true
+          kpt fn eval config-sync/ --results-dir tmp --image gcr.io/kpt-fn/kubeval:v0.3 -- strict=true ignore_missing_schemas=true
       - name: gatekeeper
         if: ${{ always() }}
         run: |
